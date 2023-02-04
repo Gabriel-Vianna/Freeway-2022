@@ -11,9 +11,15 @@ public class MotorCycle : MonoBehaviour
     private bool isGoingToTravel;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Player player = other.GetComponent<Player>();
-        player.finish();
+       if(other.gameObject.name == "Player") {
+            Player player = other.GetComponent<Player>();
+            player.finish();
+        }else {
+            Player2 player2 = other.GetComponent<Player2>();
+            player2.finish();
+        }
     }
+
 
     // Update is called once per frame
     void Update()

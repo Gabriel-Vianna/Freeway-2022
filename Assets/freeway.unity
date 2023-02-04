@@ -233,7 +233,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOver: 1
-  player: {fileID: 379625508}
+  player: {fileID: 678807227}
+  player2: {fileID: 1909999234}
+  freewayMap: {fileID: 1665092857}
 --- !u!4 &342217430
 Transform:
   m_ObjectHideFlags: 0
@@ -249,11 +251,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &379625508 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4522051038530491964, guid: 406308ca032b71741a00520d0dc05418, type: 3}
-  m_PrefabInstance: {fileID: 4522051037486051365}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,6 +415,11 @@ RectTransform:
   m_AnchoredPosition: {x: -124.3999, y: -71.46704}
   m_SizeDelta: {x: 292.8337, y: 75.2631}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &678807227 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6496566381650935113, guid: 406308ca032b71741a00520d0dc05418, type: 3}
+  m_PrefabInstance: {fileID: 4522051037486051365}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &764575094
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,7 +437,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &764575095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,7 +445,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 764575094}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -492,7 +494,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 302.1, y: 243.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &830696521
 GameObject:
@@ -763,6 +765,56 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1665092856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1665092858}
+  - component: {fileID: 1665092857}
+  m_Layer: 0
+  m_Name: FreewayMap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1665092857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665092856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbc79019a9889e94bb5e68cdb0bc9e45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _SpawnManager: {fileID: 4522051037486051367}
+--- !u!4 &1665092858
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665092856}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.35981792, y: -0.7143513, z: 0.0046505667}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1909999234 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 750560445640676065, guid: 406308ca032b71741a00520d0dc05418, type: 3}
+  m_PrefabInstance: {fileID: 4522051037486051365}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4522051037486051365
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -770,6 +822,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 44849249019041443, guid: 406308ca032b71741a00520d0dc05418, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 5022602860645237092, guid: 07e12f11d1f8ffb40adc53faf1a1e38b, type: 3}
+    - target: {fileID: 4375110226422804989, guid: 406308ca032b71741a00520d0dc05418, type: 3}
+      propertyPath: MaxStep
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4522051036800062662, guid: 406308ca032b71741a00520d0dc05418, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -818,5 +878,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Freeway
       objectReference: {fileID: 0}
+    - target: {fileID: 4927702782014404867, guid: 406308ca032b71741a00520d0dc05418, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 406308ca032b71741a00520d0dc05418, type: 3}
+--- !u!114 &4522051037486051367 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4522051036953069422, guid: 406308ca032b71741a00520d0dc05418, type: 3}
+  m_PrefabInstance: {fileID: 4522051037486051365}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5d587db7120ff7479075738a9c63242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

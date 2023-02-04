@@ -31,6 +31,7 @@ public class Player : Agent
 
     void Start()
     {
+        transform.position = new Vector3(-4,screenLimitBotton,0);
         rBody = GetComponent<Rigidbody2D>();
 
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
@@ -43,7 +44,7 @@ public class Player : Agent
 
     public override void OnEpisodeBegin()
     {
-        transform.position = new Vector3(0, screenLimitBotton , 0);
+        transform.position = new Vector3(-4, screenLimitBotton , 0);
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -93,6 +94,7 @@ public class Player : Agent
         lives -= 1;
         _uiManager.updateLives(lives);
         if(lives == 0) {
+            _gameManager.gameOver = true;
             lives = 3;
             _uiManager.updateLives(lives);
         }
