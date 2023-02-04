@@ -1,4 +1,4 @@
-<img src="assets/statics/cover.png" align="middle" width="3000"/>
+<img src="./Assets/statics/cover.png" align="middle" width="3000"/>
 
 # Freeway 2022
 
