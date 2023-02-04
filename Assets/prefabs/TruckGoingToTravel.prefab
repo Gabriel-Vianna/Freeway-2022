@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 318566461186595428}
   - component: {fileID: -1536186495591458815}
   - component: {fileID: -8342900385641183685}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TruckGoingToTravel
-  m_TagString: Untagged
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71506a6533df35b4a853e7d42f64a886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  truckSpeed: 4
+  truckSpeed: 6
   isGoingToTravel: 1
 --- !u!61 &-1536186495591458815
 BoxCollider2D:

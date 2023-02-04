@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6092232700313464059}
   - component: {fileID: -1870842305332547177}
   - component: {fileID: 6994110164486455569}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CarBackingFromTravel
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

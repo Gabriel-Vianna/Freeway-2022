@@ -5,7 +5,7 @@ using UnityEngine;
 public class Truck : MonoBehaviour
 {
     [SerializeField]
-    private float truckSpeed = 4.0f;
+    private float truckSpeed = 6f;
 
     [SerializeField]
     private bool isGoingToTravel;
@@ -15,7 +15,6 @@ public class Truck : MonoBehaviour
     {
         
     }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         Player player = other.GetComponent<Player>();

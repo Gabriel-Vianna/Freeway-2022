@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5365884721588587316}
   - component: {fileID: 4481860453947522994}
   - component: {fileID: 8304419797612314680}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TruckBackingFromTravel
-  m_TagString: Untagged
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71506a6533df35b4a853e7d42f64a886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  truckSpeed: 4
+  truckSpeed: 6
   isGoingToTravel: 0
 --- !u!50 &4481860453947522994
 Rigidbody2D:

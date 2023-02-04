@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: -172583578991473346}
   - component: {fileID: 717729334405754108}
   - component: {fileID: -4933901212775971937}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MotorCycleGoingToTravel
-  m_TagString: Untagged
+  m_TagString: MotorCycle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: -1187939163
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e9e7088dee027734d944570b1ddbcebc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5ab904f81a14ae5418ab66837cf5eb3c, type: 3}
   m_Color: {r: 0.7686275, g: 0.7686275, b: 0.7686275, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e50790bcdcdde48a5b780c8723d833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  motorCycleSpeed: 15
+  motorCycleSpeed: 6
   isGoingToTravel: 1
 --- !u!61 &717729334405754108
 BoxCollider2D:

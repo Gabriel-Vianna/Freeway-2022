@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5200506741480427966}
   - component: {fileID: 1229843859818193331}
   - component: {fileID: 7611150102193490035}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MotorCycleBackingFromTravel
-  m_TagString: Untagged
+  m_TagString: MotorCycle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e50790bcdcdde48a5b780c8723d833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  motorCycleSpeed: 15
+  motorCycleSpeed: 6
   isGoingToTravel: 0
 --- !u!50 &1229843859818193331
 Rigidbody2D:

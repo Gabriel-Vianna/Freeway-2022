@@ -15,94 +15,94 @@ public class Player : Agent
     public Transform Target;
     Rigidbody2D rBody;
 
+    private float screenLimitBotton = -5.15f;
+
+    private float screenLimitLeft = -14.94f;
+
+    private float screenLimitRight = 14.94f;
+
+    private float movedDistance = -5.15f;
+
+    public int lives = 3;
+
+    private UIManager _uiManager;
+    
+    private GameManager _gameManager;
+
     void Start()
     {
         rBody = GetComponent<Rigidbody2D>();
-        // transform.position = new Vector3(0.22f, -4.15f , 0);
-        _SpawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
-        _SpawnManager.startCarSpawn();
+
+        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        if (_uiManager) {
+            _uiManager.updateLives(lives);
+        }
     }
-
-    // Update is called once per frame
-    // void Update()
-    // {
-        // var positions = new List<float> { -4.5f, -3.45f, -2.10f, -0.75f, 0.75f, 2.10f, 3.45f, 4.5f };
-
-        // if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) {
-        //     if (position < 7) {
-        //         position++;
-        //     }
-        //     transform.position = new Vector3(0.0f, positions[position] , 0);
-        // }
-
-        // if(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) {
-        //     if (position > 0) {
-        //         position--;
-        //     }
-        //     float positionY = transform.position.y;
-        //     transform.position = new Vector3(0.0f, positions[position] , 0);
-        // }
-
-        // horizontalInput = Input.GetAxis("Horizontal");
-        // verticalInput = Input.GetAxis("Vertical");
-        // transform.Translate(Vector3.right * speed * horizontalInput * Time.deltaTime);
-        // transform.Translate(Vector3.up * speed * verticalInput * Time.deltaTime);
-    // }
 
     public override void OnEpisodeBegin()
     {
-        transform.position = new Vector3(0, -4.5f , 0);
+        transform.position = new Vector3(0, screenLimitBotton , 0);
     }
 
     public override void CollectObservations(VectorSensor sensor)
     {
         // Target and Agent positions
-        sensor.AddObservation(Target.localPosition);
+        sensor.AddObservation(Target.localPosition.x);
         sensor.AddObservation(this.transform.localPosition);
+
+        sensor.AddObservation(movedDistance);
 
         // Agent velocity
         sensor.AddObservation(rBody.velocity.x);
         sensor.AddObservation(rBody.velocity.y);
     }
 
-    public float forceMultiplier = 2;
-    public override void OnActionReceived(ActionBuffers actionBuffers)
+    public override void OnActionReceived(ActionBuffers actions)
     {
-        // Actions, size = 2
         Vector3 controlSignal = Vector3.zero;
-        controlSignal.x = actionBuffers.ContinuousActions[0];
-        controlSignal.y = actionBuffers.ContinuousActions[1];
-        // rBody.AddForce(controlSignal * forceMultiplier);
+        controlSignal.x = actions.ContinuousActions[0];
+        controlSignal.y = actions.ContinuousActions[1];
+        
         transform.Translate(controlSignal * speed * Time.deltaTime);
-        // transform.Translate(Vector3.up * speed * verticalInput * Time.deltaTime);
 
-        // Rewards
-        float distanceToTarget = Vector3.Distance(this.transform.localPosition, Target.localPosition);
+        if(this.transform.position.y > movedDistance) {
+            AddReward(0.05f);
+        }else {
+            AddReward(-0.05f);
+        }
+        movedDistance = this.transform.position.y;
 
         // Reached target
         if (transform.position.y > Target.position.y)
         {
-            SetReward(1.0f);
-            finish();
+            earnedReward();
         }
 
-        if (transform.position.y < -5.0f) {
-            transform.position = new Vector3(transform.position.x, -5.0f, 0);
+        if (transform.position.y < screenLimitBotton) {
+            EndEpisode();
         }
 
-        if (transform.position.x > 14.94f) {
-            transform.position = new Vector3(14.94f, transform.position.y, 0);
-        } else if (transform.position.x < -14.94f) {
-            transform.position = new Vector3(-14.94f, transform.position.y, 0);
+        if (transform.position.x > screenLimitRight || transform.position.x < screenLimitLeft) {
+            EndEpisode();
         }
     }
 
     public void finish() {
+        lives -= 1;
+        _uiManager.updateLives(lives);
+        if(lives == 0) {
+            lives = 3;
+            _uiManager.updateLives(lives);
+        }
+        SetReward(-5.0f);
         EndEpisode();
     }
 
     public void earnedReward() {
-        SetReward(1.0f);
+        SetReward(5.0f);
+        _uiManager.updateScore();
         EndEpisode();
     }
 

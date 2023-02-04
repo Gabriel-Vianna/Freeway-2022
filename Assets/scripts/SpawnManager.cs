@@ -11,16 +11,10 @@ public class SpawnManager : MonoBehaviour
     private GameObject carBackingFromTravelGameObject;
 
     [SerializeField]
-    private float carSpeedRespawn = 1.0f;
-
-    [SerializeField]
     private GameObject truckGoingToTravelGameObject;
 
     [SerializeField]
     private GameObject truckBackingFromTravelGameObject;
-
-    [SerializeField]
-    private float truckSpeedRespawn = 2.0f;
 
     [SerializeField]
     private GameObject MotorCycleGoingToTravelGameObject;
@@ -29,49 +23,40 @@ public class SpawnManager : MonoBehaviour
     private GameObject MotorCycleBackingFromTravelGameObject;
 
     [SerializeField]
-    private float motorCycleSpeedRespawn = 3;
+    private float vehicleSpeedRespawn = 1f;
 
-    // Start is called before the first frame update
     public void startCarSpawn()
     {
-        StartCoroutine("getCars"); 
-        StartCoroutine("getTrucks");
-        StartCoroutine("getMotorCycles");
+        StartCoroutine("goinToTravelVehicles"); 
+        StartCoroutine("backingFromTravelVehicles"); 
     }
 
-    public IEnumerator getCars()
+    public IEnumerator goinToTravelVehicles()
     {
         while (true) {
-            transform.position = new Vector3(15.8f, 3.45f, 0);
-            Instantiate(carGoingToTravelGameObject, transform.position, Quaternion.identity);
+            var vehicleRandom = Random.Range(0, 3);
+            var positionRandom = Random.Range(0, 3);
+            float[] positions = {3.45f, 2.08f, 0.75f};
+            GameObject[] vehicles = {carGoingToTravelGameObject, truckGoingToTravelGameObject, MotorCycleGoingToTravelGameObject};
+            transform.position = new Vector3(15.8f, positions[positionRandom], 0);
+            Instantiate(vehicles[vehicleRandom], transform.position, Quaternion.identity);
 
-            transform.position = new Vector3(-15.8f, -3.45f, 0);
-            Instantiate(carBackingFromTravelGameObject, transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(carSpeedRespawn); 
+            yield return new WaitForSeconds(vehicleSpeedRespawn); 
         }
     }
 
-    public IEnumerator getTrucks()
+    public IEnumerator backingFromTravelVehicles()
     {
         while (true) {
-            transform.position = new Vector3(16.8f, 2.08f, 0);
-            Instantiate(truckGoingToTravelGameObject, transform.position, Quaternion.identity);
+            var vehicleRandom = Random.Range(0, 3);
+            var positionRandom = Random.Range(0, 3);
+            float[] positions = {-3.45f, -2.08f, -0.75f};
+            GameObject[] vehicles = {carBackingFromTravelGameObject, truckBackingFromTravelGameObject, MotorCycleBackingFromTravelGameObject};
 
-            transform.position = new Vector3(-16.8f, -2.08f, 0);
-            Instantiate(truckBackingFromTravelGameObject, transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(truckSpeedRespawn);
-        }
-    }
+            transform.position = new Vector3(-15.8f, positions[positionRandom], 0);
+            Instantiate(vehicles[vehicleRandom], transform.position, Quaternion.identity);
 
-    public IEnumerator getMotorCycles()
-    {
-        while (true) {
-            transform.position = new Vector3(16.0f, 0.75f, 0);
-            Instantiate(MotorCycleGoingToTravelGameObject, transform.position, Quaternion.identity);
-
-            transform.position = new Vector3(-16.0f, -0.75f, 0);
-            Instantiate(MotorCycleBackingFromTravelGameObject, transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(motorCycleSpeedRespawn);
+            yield return new WaitForSeconds(vehicleSpeedRespawn);
         }
     }
 }

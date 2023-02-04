@@ -5,11 +5,10 @@ using UnityEngine;
 public class MotorCycle : MonoBehaviour
 {
     [SerializeField]
-    private float motorCycleSpeed = 15f;
+    private float motorCycleSpeed = 6.0f;
 
     [SerializeField]
     private bool isGoingToTravel;
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         Player player = other.GetComponent<Player>();

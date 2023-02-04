@@ -45,6 +45,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4522051036875585459}
   - component: {fileID: 4522051036875585456}
+  - component: {fileID: 937990996}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -119,6 +120,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &937990996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4522051036875585457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbc79019a9889e94bb5e68cdb0bc9e45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _SpawnManager: {fileID: 4522051036953069422}
+  spriteRenderer: {fileID: 0}
 --- !u!1 &4522051036953069423
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,13 +180,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carGoingToTravelGameObject: {fileID: 4773599308813429325, guid: 7805932b4eca7014d870369ecd323f3a, type: 3}
   carBackingFromTravelGameObject: {fileID: 8715060573159183223, guid: 3a756ac0585097044aa854cba61fabf3, type: 3}
-  carSpeedRespawn: 1
   truckGoingToTravelGameObject: {fileID: 6810293556483690764, guid: 126e374ae683ab74d801346da9e023e9, type: 3}
   truckBackingFromTravelGameObject: {fileID: 1197870448097689692, guid: 2143462aa6df37c4aba9db2feb3b4179, type: 3}
-  truckSpeedRespawn: 2
   MotorCycleGoingToTravelGameObject: {fileID: 7513312019101919599, guid: 0c8b0d26babf432498e3016a2b27a8ae, type: 3}
   MotorCycleBackingFromTravelGameObject: {fileID: 1002109397021159308, guid: d2c485efda0191f4cb61f3a48fe2eea3, type: 3}
-  motorCycleSpeedRespawn: 4
+  vehicleSpeedRespawn: 1
 --- !u!1 &4522051037511729508
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,6 +318,53 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &2092995535958848579
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4522051038530491964}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ac2051089f4967840aff42674e28bdf5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &379625517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4522051038530491964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f67c7e722ba14acd9153bb4488bff6e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SensorName: RayPerceptionSensor
+  m_DetectableTags:
+  - Car
+  - Truck
+  - MotorCycle
+  m_RaysPerDirection: 4
+  m_MaxRayDegrees: 80.3
+  m_SphereCastRadius: 0.5
+  m_RayLength: 10
+  m_RayLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  m_ObservationStacks: 1
+  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
+  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &7239162456157939955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -320,6 +380,82 @@ PrefabInstance:
       propertyPath: _SpawnManager
       value: 
       objectReference: {fileID: 4522051036953069422}
+    - target: {fileID: 1801311525, guid: b3916989208ece04d8f0aa3fe1f33083, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 5022602860645237092, guid: 07e12f11d1f8ffb40adc53faf1a1e38b, type: 3}
+    - target: {fileID: 1801311525, guid: b3916989208ece04d8f0aa3fe1f33083, type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801311525, guid: b3916989208ece04d8f0aa3fe1f33083, type: 3}
+      propertyPath: m_BrainParameters.VectorActionSize.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801311525, guid: b3916989208ece04d8f0aa3fe1f33083, type: 3}
+      propertyPath: m_BrainParameters.m_ActionSpec.BranchSizes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801311525, guid: b3916989208ece04d8f0aa3fe1f33083, type: 3}
+      propertyPath: m_BrainParameters.m_ActionSpec.BranchSizes.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801311525, guid: b3916989208ece04d8f0aa3fe1f33083, type: 3}
+      propertyPath: m_BrainParameters.m_ActionSpec.BranchSizes.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801311526, guid: b3916989208ece04d8f0aa3fe1f33083, type: 3}
+      propertyPath: DecisionPeriod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037245901333795473, guid: b3916989208ece04d8f0aa3fe1f33083, type: 3}
+      propertyPath: m_Size.y
+      value: 0.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037245901333795473, guid: b3916989208ece04d8f0aa3fe1f33083, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037245901333795473, guid: b3916989208ece04d8f0aa3fe1f33083, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037245901333795473, guid: b3916989208ece04d8f0aa3fe1f33083, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 2.7692308
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037245901333795473, guid: b3916989208ece04d8f0aa3fe1f33083, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 2.3076923
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037245901333795473, guid: b3916989208ece04d8f0aa3fe1f33083, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.7692308
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037245901333795473, guid: b3916989208ece04d8f0aa3fe1f33083, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2.3076923
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536735800198479564, guid: b3916989208ece04d8f0aa3fe1f33083, type: 3}
+      propertyPath: m_Size.x
+      value: 2.7692308
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536735800198479564, guid: b3916989208ece04d8f0aa3fe1f33083, type: 3}
+      propertyPath: m_Size.y
+      value: 2.3076923
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536735800198479564, guid: b3916989208ece04d8f0aa3fe1f33083, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5930265372572760309, guid: 99c3a16f3e77444d9bf957671057c32d, type: 3}
+    - target: {fileID: 6536735800198479564, guid: b3916989208ece04d8f0aa3fe1f33083, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536735800198479564, guid: b3916989208ece04d8f0aa3fe1f33083, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6536735800198479565, guid: b3916989208ece04d8f0aa3fe1f33083, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -330,7 +466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6536735800198479565, guid: b3916989208ece04d8f0aa3fe1f33083, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.7
+      value: -3.15
       objectReference: {fileID: 0}
     - target: {fileID: 6536735800198479565, guid: b3916989208ece04d8f0aa3fe1f33083, type: 3}
       propertyPath: m_LocalPosition.z
@@ -370,6 +506,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3916989208ece04d8f0aa3fe1f33083, type: 3}
+--- !u!1 &4522051038530491964 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6536735800198479567, guid: b3916989208ece04d8f0aa3fe1f33083, type: 3}
+  m_PrefabInstance: {fileID: 7239162456157939955}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4522051038530491966 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6536735800198479565, guid: b3916989208ece04d8f0aa3fe1f33083, type: 3}
